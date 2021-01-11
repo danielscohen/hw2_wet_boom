@@ -1,0 +1,1565 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass heb-article
+\begin_preamble
+\usepackage{xcolor}
+\definecolor{blue}{RGB}{0, 0, 140}
+\definecolor{green}{RGB}{0, 140, 0}
+\definecolor{red}{RGB}{220, 0, 0}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language hebrew
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "David"
+\font_sans "default" "David"
+\font_typewriter "default" "David"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 3cm
+\headheight 0cm
+\headsep 0cm
+\footskip 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "../../../MacrosHeb.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+תאור של המבני נתונים:
+\end_layout
+
+\begin_layout Standard
+שני המבנים המרכזיים במימוש הם טבלת ערבול 
+\begin_inset Formula $courseTable$
+\end_inset
+
+ המכיל את כלל הקורסים שנוספו למערכת, 
+\end_layout
+
+\begin_layout Standard
+ועץ דרגות 
+\begin_inset Formula $AVL$
+\end_inset
+
+ 
+\begin_inset Formula $rankedClassTree$
+\end_inset
+
+ּ המכיל את כלל השיעורים של כל הקורסים במערכת, מסודר לפי הסדר המתואר בפונקציה
+ 
+\begin_inset Formula $GetIthWatchedClass$
+\end_inset
+
+ )לפי משך זמן צפייה, מספר מזהה של הקורס, ומספר השיעור(.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $courseTable$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+טבלת ערבול דינמית מסוג שרשראות המכיל את כלל הקורסים שנוספו למערכת.
+ כל קורס כזה בטבלה היא בעצמה טבלת ערבול דינמית מסוג שרשראות 
+\begin_inset Formula $classTable$
+\end_inset
+
+ המכיל את כלל השיעורים של אותו קורס שנוספו למערכת עד אותה רגע.
+ כל שיעור בטבלה הפנימי יכיל את משך זמן הצפייה שלו בשדה 
+\begin_inset Formula $viewTime$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+גם 
+\begin_inset Formula $courseTable$
+\end_inset
+
+ וגם כלל ה-
+\begin_inset Formula $classTable$
+\end_inset
+
+'ים בתוכו מכילות כל אחד שדה 
+\begin_inset Formula $arrSize$
+\end_inset
+
+ גודל של המערך כעת, ושדה 
+\begin_inset Formula $numCourses$
+\end_inset
+
+ המכילה את מספר הקורסים כעת במערכת )במקרה של 
+\begin_inset Formula $courseTable$
+\end_inset
+
+( או את 
+\begin_inset Formula $numClasses$
+\end_inset
+
+ המכיל את מספר השיעורים של אותה קורס )במקרה של 
+\begin_inset Formula $classTable$
+\end_inset
+
+( .
+ בנוסף, לכל הטבלאות יש פונקציית ערבול 
+\begin_inset Formula $h$
+\end_inset
+
+ המוגדר כ-
+\begin_inset Formula 
+\[
+h\left(x\right)=x\cdot\mod arrSize
+\]
+
+\end_inset
+
+ עבור 
+\begin_inset Formula $courseTable$
+\end_inset
+
+, אם 
+\begin_inset Formula $numCourses$
+\end_inset
+
+ שווה ל-
+\begin_inset Formula $arrSize$
+\end_inset
+
+ אז נגדיל את המערך פי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ואם 
+\begin_inset Formula $numCourses$
+\end_inset
+
+ שווה ל
+\begin_inset Formula $arrSize/4$
+\end_inset
+
+ נקטין את המערך פי
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+2
+\numeric off
+.
+ כך תמיד 
+\begin_inset Formula $numCourses=O\left(arrSize\right)$
+\end_inset
+
+, ולכן במקרה שלנו 
+\begin_inset Formula $\alpha=O\left(1\right)$
+\end_inset
+
+.
+ ובנוסף לפי התירגול ה-
+\begin_inset Formula $h\left(x\right)$
+\end_inset
+
+ שלנו מקיים את הנחת פיזור האחיד הפשוט ולכן פעלולות ההוספה ומחיקה מהמערך
+ לוקחים 
+\begin_inset Formula $O\left(\alpha\right)=O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט משוערכת ופעולת החיפוש לוקח 
+\begin_inset Formula $O\left(\alpha\right)=O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט.
+ לפי בדיוק אותה טענות מתקיים אותם סיבוכיות עבור טבלאות ה-
+\begin_inset Formula $classTable$
+\end_inset
+
+ אם 
+\begin_inset Formula $numClasses$
+\end_inset
+
+ במקום 
+\begin_inset Formula $numCourses$
+\end_inset
+
+ בהתאמה.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+עץ דרגות 
+\begin_inset Formula $AVL$
+\end_inset
+
+ המכיל את כלל השירים של כל האומנים במערכת, 
+\begin_inset Newline newline
+\end_inset
+
+מסודר לפי הסדר המתואר בפונקציה 
+\begin_inset Formula $GetRecommendedSongInPlace$
+\end_inset
+
+ )לפי מספר השמעות, מספר מזהה של אומן, ומספר השיר(.
+ כל שיר מיוצג ע
+\begin_inset Quotes erd
+\end_inset
+
+י אותו אובייקט 
+\begin_inset Formula $song$
+\end_inset
+
+ המתואר למעלה , כאשר כל השדות של 
+\begin_inset Formula $song$
+\end_inset
+
+ ביחד הם המפתח של אותה שיר.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Untitled Diagram (1).png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+מבנה הנתונים
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+חישוב סיבוכיות מקום של המבנה נתונים:
+\end_layout
+
+\begin_layout Standard
+נשים לב לעובדה שבכל עת, קיים בדיוק עותק אחד של כל אומן במערכת, וקיים בדיוק
+ שלושה עותקים של כל שיר במערכת )אחד ב-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+, אחד ב-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+ , ואחת ב-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+(.
+ לכן, אם 
+\begin_inset Formula $m$
+\end_inset
+
+ מספר האומנים כעת במערכת ו-
+\begin_inset Formula $n$
+\end_inset
+
+ מספר השירים הכולל כעת במערכת, אז עבור סיבוכיות המקום הכולל של המערכת נקבל:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+O\left(3n+m\right)=O\left(n+m\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+תאור מימוש הפונקציות:
+\end_layout
+
+\begin_layout Standard
+עבור כל הפונקציות שמקבלות פרמטרים, נבצע בדיקת תקינות הפרמטרים.
+ במקרה שאחד או יותר מהפרמטרים לא תקינים, נחזיר 
+\begin_inset Formula $INVALIDINPUT$
+\end_inset
+
+.
+ הבדיקה הזאות היא תמיד מספר קבוע של פעולות.
+\end_layout
+
+\begin_layout Standard
+בנוסף, עבור כל הפונקציות שיש להם ערך החזרה, במקרה שהפונקציה מסיימת בהצלחה
+ נחזיר 
+\begin_inset Formula $SUCCESS$
+\end_inset
+
+, שזה מספר קבוע של פעולות.
+\end_layout
+
+\begin_layout Standard
+בכל חישוב של סיבוכיות, 
+\begin_inset Formula $n_{1}$
+\end_inset
+
+ מסמן מספר השירים של אומן מסוים, ו-
+\begin_inset Formula $n$
+\end_inset
+
+ מסמן מספר השירים בכללי במערכת
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $Init()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+ניצור 
+\begin_inset Formula $artistsTable$
+\end_inset
+
+ ריקה עם מערך ערבול בגודל התחלתי 
+\begin_inset Formula $10$
+\end_inset
+
+ )
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן לפי התירגול(.
+\end_layout
+
+\begin_layout Enumerate
+נאתחל את 
+\begin_inset Formula $arrSize$
+\end_inset
+
+ ל-
+\begin_inset Formula $10$
+\end_inset
+
+ ו-
+\begin_inset Formula $numArtists$
+\end_inset
+
+ ל-
+\begin_inset Formula $0$
+\end_inset
+
+ )
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן(.
+\end_layout
+
+\begin_layout Enumerate
+ניצור 
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+ ריקה 
+\begin_inset Formula $O\left(1\right))$
+\end_inset
+
+ זמן לפי התירגול(.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $AddArtist()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם כבר קיים האומן עם המספר המזהה הנתון ב-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+.
+ אם כן, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט כי לפי התירגול פעולת חיפוש על טבלת ערבול שרשראות לוקחת
+ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט(
+\end_layout
+
+\begin_layout Enumerate
+אחרת ניצור 
+\begin_inset Formula $artist$
+\end_inset
+
+ חדש עם 
+\begin_inset Formula $artistID$
+\end_inset
+
+ השווה למספר מזהה הנתון ונוסיף אותו ל-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+ באותו אופן שהוגדר הוספה לטבלת ערבול שרשראות בתירגול, ואז נקדם את 
+\begin_inset Formula $numArtists$
+\end_inset
+
+ ב-
+\numeric on
+1
+\numeric off
+.
+ אם אחרי ההוספה של האחד 
+\begin_inset Formula $numArtists$
+\end_inset
+
+ שווה ל-
+\begin_inset Formula $arrSize$
+\end_inset
+
+ אז נכפיל את גודל המערך פי שתיים כמו שהוגדר בתירגול לגבי מערכים דינמיים,
+ ואז נעדכן את 
+\begin_inset Formula $arrSize$
+\end_inset
+
+ לגודל החדש )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט משוערכת כי לפי התירגול פעולת הוספה לטבלת ערבול שרשרות
+ דינמית לוקחת 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן משוערכת בממוצע על הקלט (.
+\end_layout
+
+\begin_layout Enumerate
+נאתחל את 
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+, ו-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+ להיות ריקים )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן כי לפי התירגול ייצור של עץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ ריק לוקחת 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן (
+\end_layout
+
+\begin_layout Enumerate
+נצביע את 
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ ל-
+\begin_inset Formula $NULL$
+\end_inset
+
+ )
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן(
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט משוערכת.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $RemoveArtist()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+.
+ אם לא קיים או ש-
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ של האומן היא לא 
+\begin_inset Formula $NULL$
+\end_inset
+
+, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט כי לפי התירגול פעולת חיפוש על טבלת ערבול שרשראות לוקחת
+ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט(
+\end_layout
+
+\begin_layout Enumerate
+אחרת נמחוק את האומן מ-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+ ונוריד את 
+\begin_inset Formula $numArtists$
+\end_inset
+
+ ב-
+\numeric on
+1
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ אם אחרי ההורדה 
+\begin_inset Formula $numArtists$
+\end_inset
+
+ קטן או שווה ל-
+\begin_inset Formula $arrSize/4$
+\end_inset
+
+ וגדול מ-
+\numeric on
+3
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+נחלק את גודל המערך של 
+\begin_inset Formula $artistsTable$
+\end_inset
+
+ בחצי כמו שהוגדר בתירגול לגבי מערכים דינמיים, ואז נעדכן את 
+\begin_inset Formula $arrSize$
+\end_inset
+
+ לגודל החדש.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט משוערכת כי לפי התירגול פעולת מחיקה מטבלת ערבול שרשראות
+ דינמית לוקחת 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן משוערכת בממוצע על הקלט , והמחיקה של העצים הפנימיים הריקים של 
+\begin_inset Formula $artist$
+\end_inset
+
+ לוקחים 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט משוערכת.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $AddSong()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+.
+ אם לא קיים, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט כי לפי התירגול פעולת חיפוש על טבלת ערבול שרשראות לוקחת
+ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט(.
+ אם האומן קיים אבל כבר קיים לו שיר עם אותו מספר מזהה ב-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+, נחזיר גם כן 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולת חיפוש בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Enumerate
+אחרת נוסיף את השיר קודם ל-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולת הכנסה לעץ דרגות 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+ אחרי זה נוסיף את השיר ל-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+ ול-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כל אחד כי לפי התירגול פעולת הכנסה לעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Enumerate
+אם לשיר החדש יש את הכי הרבה השמעות מכל השירים של האומן אז נצביע את 
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ לצומת של השיר ב-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי סיור בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ מהשורש לצומת הכי גבוהה לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בבגרוע, ולכן גם 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ בממוצע על הקלט.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $RemoveSong()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+.
+ אם לא קיים, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט כי לפי התירגול פעולת חיפוש על טבלת ערבול שרשראות לוקחת
+ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט(.
+ אם האומן קיים אבל לא קיים לו שיר עם אותו מספר מזהה ב-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+, נחזיר גם כן 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולת חיפוש בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Enumerate
+אחרת נמחוק את השיר קודם מ-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולת מחיקתה מעץ דרגות 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+ אחרי זה נמחוק את השיר ב-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+ וב-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כל אחד כי לפי התירגול פעולת המחיקה בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Enumerate
+אם לשיר שמחקנו היה את הכי הרבה השמעות מכל השירים של האומן אז נצביע את 
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ לצומת שעכשיו יש את הכי הרבה השמעות ב-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי סיור בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ מהשורש לצומת הכי גבוהה לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בבגרוע, ולכן גם 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ בממוצע על הקלט.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $AddToSongCount()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+.
+ אם לא קיים, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט כי לפי התירגול פעולת חיפוש על טבלת ערבול שרשראות לוקחת
+ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט(.
+ אם האומן קיים אבל לא קיים לו שיר עם אותו מספר מזהה ב-
+\begin_inset Formula $artistSongsByID$
+\end_inset
+
+, נחזיר גם כן 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולת חיפוש בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Enumerate
+אחרת קודם נוריד את השיר מ-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+, נוסיף לו 
+\begin_inset Formula $count$
+\end_inset
+
+ השמעות, ואז נוסיף מחדש ל-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+ )ולכן נעדכן את מיקומו בעץ( )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולות מחיקה והוספה לעץ דרגות 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחות 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+ אחרי זה נוריד את השיר מ-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+, ואז נוסיף מחדש ל-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+ )ולכן נעדכן את מיקומו בעץ( )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולות מחיקה והוספה לעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחות 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Enumerate
+אם לשיר שהוספנו לו השמעות כעת יש את הכי הרבה השמעות מכל השירים של האומן
+ אז נצביע את 
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ אליו ב-
+\begin_inset Formula $artistSongsByStreams$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע כי סיור בעץ 
+\begin_inset Formula $AVL$
+\end_inset
+
+ מהשורש לצומת הכי גבוהה לוקחת 
+\begin_inset Formula $O\left(log\left(n_{1}\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בבגרוע, ולכן גם 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ בממוצע על הקלט.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $GetArtistBestSong()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
+\begin_inset Formula $artistsTable$
+\end_inset
+
+.
+ אם לא קיים, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט כי לפי התירגול פעולת חיפוש על טבלת ערבול שרשראות לוקחת
+ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט(.
+ אם האומן קיים אבל אין לו שירים, נחזיר גם כן 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בגרוע כי זה בדיקה האם ה-
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ של האומן היא 
+\begin_inset Formula $NULL$
+\end_inset
+
+(.
+\end_layout
+
+\begin_layout Enumerate
+אחרת נציב את המספר המזהה של השיר שאליו מצביע 
+\begin_inset Formula $mostStreamed$
+\end_inset
+
+ ב-
+\begin_inset Formula $songID$
+\end_inset
+
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בגרוע (.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בממוצע על הקלט.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $GetRecommendedSongInPlace()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נבדוק אם מספר השירים ב-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+ הוא קטן מ-
+\begin_inset Formula $rank$
+\end_inset
+
+.
+ אם כן, נחזיר 
+\begin_inset Formula $FAILURE$
+\end_inset
+
+.
+ )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(1\right)$
+\end_inset
+
+ זמן בגרוע כי נדרש רק בדיקה האם 
+\begin_inset Formula $rank$
+\end_inset
+
+ גדול משדה ה-
+\begin_inset Formula $w$
+\end_inset
+
+ של השורש של 
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+ (.
+\end_layout
+
+\begin_layout Enumerate
+אחרת נחפש את השיר אם דרגת 
+\begin_inset Formula $rank$
+\end_inset
+
+ ב-
+\begin_inset Formula $rankedSongsTree$
+\end_inset
+
+.
+ אחרי שמצאנו אותו נציב ב-
+\begin_inset Formula $artistID$
+\end_inset
+
+ את מספר המזהה של האומן של השיר וב-
+\begin_inset Formula $songID$
+\end_inset
+
+ את מספר המזהה של השיר עצמו )סה
+\begin_inset Quotes erd
+\end_inset
+
+כ 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע כי לפי התירגול פעולת חיפוש של צומת לפי דרגה בעץ דרגות 
+\begin_inset Formula $AVL$
+\end_inset
+
+ לוקחת 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע(.
+\end_layout
+
+\begin_layout Standard
+סה
+\begin_inset Quotes erd
+\end_inset
+
+כ קיבלנו שסיבוכיות הזמן של כל הפונקציה היא 
+\begin_inset Formula $O\left(log\left(n\right)\right)$
+\end_inset
+
+ זמן בגרוע.
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Formula $Quit()$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+נמחוק את כל המבני נתונים.
+ קיים בדיוק 
+\begin_inset Formula $m$
+\end_inset
+
+ אובייקטים המייצגים ה-
+\begin_inset Formula $m$
+\end_inset
+
+ אומנים במבני הנתונים, וקיים בדיוק
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset Formula $3n$
+\end_inset
+
+ אובייקטים המייצגים 
+\begin_inset Formula $n$
+\end_inset
+
+ השירים הכולל במבני הנתונים.
+ לכן מחיקה של כל המבני נתונים ייקח 
+\begin_inset Formula $O\left(m+n\right)$
+\end_inset
+
+ זמן.
+\end_layout
+
+\end_body
+\end_document
