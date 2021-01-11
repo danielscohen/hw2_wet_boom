@@ -8,18 +8,18 @@
 
 
 #include "AVLRankTree.h"
-#include "AllSongsByStreamsKey.h"
+#include "Lecture.h"
 #include "HashTable.h"
-#include "Artist.h"
+#include "Course.h"
 
-class MusicManager {
+class CoursesManager {
 
-    HashTable<std::shared_ptr<Artist>> artistsTable;
-    AVLRankTree<std::shared_ptr<AllSongsByStreamsKey>> rankedSongsTree;
+    HashTable<std::shared_ptr<Course>> courseTable;
+    AVLRankTree<std::shared_ptr<Lecture>> rankedClassTree;
 
 public:
 
-    StatusType addArtist(int artistID);
+    StatusType addCourse(int courseID);
     StatusType removeArtist(int artistID);
     StatusType addSong(int artistID, int songID, int numStreams);
     StatusType removeSong(int artistID, int songID);

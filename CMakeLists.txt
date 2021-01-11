@@ -6,10 +6,10 @@ set(CMAKE_CXX_STANDARD 11)
 include_directories(.)
 
 add_executable(hw2_wet
-        AllSongsByStreamsKey.cpp
-        AllSongsByStreamsKey.h
-        Artist.cpp
-        Artist.h
+        Lecture.cpp
+        Lecture.h
+        Course.cpp
+        Course.h
         ArtistSongsByIDKey.cpp
         ArtistSongsByIDKey.h
         ArtistSongsByStreamsKey.cpp
@@ -20,6 +20,6 @@ add_executable(hw2_wet
         library2.h
         List.h
         main2.cpp
-        MusicManager.cpp
-        MusicManager.h
+        CoursesManager.cpp
+        CoursesManager.h
         out2.txt)

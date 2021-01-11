@@ -429,7 +429,7 @@ status open
 \end_inset
 
  , ואחת ב-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
 (.
@@ -499,7 +499,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 ניצור 
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
  ריקה עם מערך ערבול בגודל התחלתי 
@@ -539,7 +539,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 ניצור 
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
  ריקה 
@@ -570,7 +570,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם כבר קיים האומן עם המספר המזהה הנתון ב-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
 .
@@ -601,11 +601,11 @@ O\left(3n+m\right)=O\left(n+m\right)
 \end_inset
 
  חדש עם 
-\begin_inset Formula $artistID$
+\begin_inset Formula $courseID$
 \end_inset
 
  השווה למספר מזהה הנתון ונוסיף אותו ל-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
  באותו אופן שהוגדר הוספה לטבלת ערבול שרשראות בתירגול, ואז נקדם את 
@@ -711,7 +711,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
 .
@@ -746,7 +746,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 אחרת נמחוק את האומן מ-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
  ונוריד את 
@@ -821,7 +821,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 \noun default
 \color inherit
 נחלק את גודל המערך של 
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
  בחצי כמו שהוגדר בתירגול לגבי מערכים דינמיים, ואז נעדכן את 
@@ -874,7 +874,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
 .
@@ -927,7 +927,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 אחרת נוסיף את השיר קודם ל-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
  )סה
@@ -1027,7 +1027,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
 .
@@ -1080,7 +1080,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 אחרת נמחוק את השיר קודם מ-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
  )סה
@@ -1180,7 +1180,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
 .
@@ -1233,7 +1233,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 אחרת קודם נוריד את השיר מ-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
 , נוסיף לו 
@@ -1241,7 +1241,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 \end_inset
 
  השמעות, ואז נוסיף מחדש ל-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
  )ולכן נעדכן את מיקומו בעץ( )סה
@@ -1342,7 +1342,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם קיים האומן עם המספר המזהה הנתון ב-
-\begin_inset Formula $artistsTable$
+\begin_inset Formula $courseTable$
 \end_inset
 
 .
@@ -1395,7 +1395,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 \end_inset
 
  ב-
-\begin_inset Formula $songID$
+\begin_inset Formula $classID$
 \end_inset
 
  )סה
@@ -1430,7 +1430,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 
 \begin_layout Enumerate
 נבדוק אם מספר השירים ב-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
  הוא קטן מ-
@@ -1460,7 +1460,7 @@ O\left(3n+m\right)=O\left(n+m\right)
 \end_inset
 
  של השורש של 
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
  (.
@@ -1472,16 +1472,16 @@ O\left(3n+m\right)=O\left(n+m\right)
 \end_inset
 
  ב-
-\begin_inset Formula $rankedSongsTree$
+\begin_inset Formula $rankedClassTree$
 \end_inset
 
 .
  אחרי שמצאנו אותו נציב ב-
-\begin_inset Formula $artistID$
+\begin_inset Formula $courseID$
 \end_inset
 
  את מספר המזהה של האומן של השיר וב-
-\begin_inset Formula $songID$
+\begin_inset Formula $classID$
 \end_inset
 
  את מספר המזהה של השיר עצמו )סה

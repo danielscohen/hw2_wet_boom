@@ -15,6 +15,7 @@ class HashTable {
     List<T> *array;
     int arraySize;
     int numEntries;
+    int iterator;
 
     int hash(int key);
     void adjustArrSize(int size);
@@ -37,6 +38,9 @@ public:
     }
 
     HashTable();
+    T itGet();
+    void itFirst();
+    void itNext();
 };
 
 template<class T>
@@ -91,6 +95,28 @@ HashTable<T>::HashTable():array(new List<T>[10]), arraySize(10), numEntries(0) {
 template<class T>
 HashTable<T>::~HashTable() {
     delete[] array;
+}
+
+template<class T>
+T HashTable<T>::itGet() {
+    return array[iterator].getItValue();
+}
+
+template<class T>
+void HashTable<T>::itFirst() {
+    iterator = 0;
+    array[iterator].resetIterator();
+}
+
+template<class T>
+void HashTable<T>::itNext() {
+    if(array[iterator].itAtEnd()){
+        iterator++;
+        array[iterator].resetIterator();
+    }
+    else {
+        array[iterator].itNext();
+    }
 }
 
 
