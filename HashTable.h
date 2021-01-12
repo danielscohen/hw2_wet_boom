@@ -41,6 +41,8 @@ public:
     T itGet();
     void itFirst();
     void itNext();
+    bool itAtEnd();
+    int getNumEntries();
 };
 
 template<class T>
@@ -106,17 +108,39 @@ template<class T>
 void HashTable<T>::itFirst() {
     iterator = 0;
     array[iterator].resetIterator();
+    itNext();
 }
 
 template<class T>
 void HashTable<T>::itNext() {
+    if(array[iterator].itAtEnd() && iterator == arraySize - 1){
+        iterator = -1;
+        return;
+    }
     if(array[iterator].itAtEnd()){
         iterator++;
         array[iterator].resetIterator();
+        while(array[iterator].itAtEnd()){
+            iterator++;
+            if(iterator == arraySize){
+                iterator = -1;
+                return;
+            }
+            array[iterator].resetIterator();
+        }
+        return;
     }
-    else {
-        array[iterator].itNext();
-    }
+    array[iterator].itNext();
+}
+
+template<class T>
+bool HashTable<T>::itAtEnd() {
+    return iterator == -1;
+}
+
+template<class T>
+int HashTable<T>::getNumEntries() {
+    return numEntries;
 }
 
 

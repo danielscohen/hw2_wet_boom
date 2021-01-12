@@ -14,14 +14,14 @@
 
 class CoursesManager {
 
-    HashTable<std::shared_ptr<Course>> courseTable;
+    HashTable<std::shared_ptr<HashTable<std::shared_ptr<Lecture>>>> courseTable;
     AVLRankTree<std::shared_ptr<Lecture>> rankedClassTree;
 
 public:
 
     StatusType addCourse(int courseID);
-    StatusType removeArtist(int artistID);
-    StatusType addSong(int artistID, int songID, int numStreams);
+    StatusType removeCourse(int courseID);
+    StatusType addClass(int courseID, int *classID);
     StatusType removeSong(int artistID, int songID);
     StatusType addToSongCount(int artistID, int songID, int count);
     StatusType getArtistBestSong(int artistID, int *songID);

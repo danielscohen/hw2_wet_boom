@@ -6,42 +6,34 @@
 
 StatusType CoursesManager::addCourse(int courseID) {
     if(courseTable.get(courseID) != nullptr) return FAILURE;
-    return courseTable.insert(courseID, std::make_shared<Course>(Course()));
+    return courseTable.insert(courseID, std::make_shared<HashTable<std::shared_ptr<Lecture>>>());
 }
 
-StatusType CoursesManager::removeArtist(int artistID) {
-    if(courseTable.get(artistID) == nullptr || !courseTable.get(artistID)->artistSongsByID.isEmpty()) return FAILURE;
-    return courseTable.remove(artistID);
+StatusType CoursesManager::removeCourse(int courseID) {
+    if(courseTable.get(courseID) == nullptr) return FAILURE;
+    std::shared_ptr<HashTable<std::shared_ptr<Lecture>>> classTable = courseTable.get(courseID);
+    for(int i = 0; i < classTable->getNumEntries(); i++){
+        std::shared_ptr<Lecture> lecture = classTable->get(i);
+        if(lecture->viewTime > 0){
+            rankedClassTree.remove(lecture);
+        }
+    }
+    return courseTable.remove(courseID);
 }
 
-StatusType CoursesManager::addSong(int artistID, int songID, int numStreams) {
-    std::shared_ptr<Course> artist = courseTable.get(artistID);
-    std::shared_ptr<ArtistSongsByIDKey> songByID;
-    std::shared_ptr<ArtistSongsByStreamsKey> songByStreams;
-    std::shared_ptr<Lecture> song;
+StatusType CoursesManager::addClass(int courseID, int *classID) {
+    if(courseTable.get(courseID) == nullptr) return FAILURE;
+    std::shared_ptr<HashTable<std::shared_ptr<Lecture>>> classTable = courseTable.get(courseID);
+    std::shared_ptr<Lecture> lecture;
+    *classID = classTable->getNumEntries();
 
     try {
-         songByID = std::make_shared<ArtistSongsByIDKey>(ArtistSongsByIDKey(songID, numStreams));
-         songByStreams = std::make_shared<ArtistSongsByStreamsKey>(ArtistSongsByStreamsKey(songID, numStreams));
-         song = std::make_shared<Lecture>(Lecture(songID, artistID, numStreams));
+         lecture = std::make_shared<Lecture>(Lecture(*classID, courseID, 0));
+         classTable->insert(*classID, lecture);
+         rankedClassTree.insert(lecture);
     } catch (...){return ALLOCATION_ERROR;}
-
-
-
-    if(artist == nullptr || artist->artistSongsByID.isMember(songByID)) return FAILURE;
-
-
-    try {
-        artist->artistSongsByID.insert(songByID);
-        artist->artistSongsByStreams.insert(songByStreams);
-        rankedClassTree.insert(song);
-    } catch (...){return ALLOCATION_ERROR;}
-
 
     return SUCCESS;
-
-
-
 }
 
 StatusType CoursesManager::removeSong(int artistID, int songID) {
@@ -99,7 +91,7 @@ StatusType CoursesManager::addToSongCount(int artistID, int songID, int count) {
     rankedClassTree.remove(song);
 
 
-    return addSong(artistID, songID, numStreams + count);
+    return addClass(artistID, songID);
 }
 
 StatusType CoursesManager::getArtistBestSong(int artistID, int *songID) {
