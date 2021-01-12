@@ -36,80 +36,42 @@ StatusType CoursesManager::addClass(int courseID, int *classID) {
     return SUCCESS;
 }
 
-StatusType CoursesManager::removeSong(int artistID, int songID) {
-    std::shared_ptr<Course> artist = courseTable.get(artistID);
-    std::shared_ptr<ArtistSongsByIDKey> songByID;
-    std::shared_ptr<ArtistSongsByStreamsKey> songByStreams;
-    std::shared_ptr<Lecture> song;
+
+StatusType CoursesManager::watchClass(int courseID, int classID, int time) {
+    std::shared_ptr<HashTable<std::shared_ptr<Lecture>>> classTable = courseTable.get(courseID);
+    if(classTable != nullptr && classID + 1 > classTable->getNumEntries()) return INVALID_INPUT;
+    if(classTable == nullptr) return FAILURE;
+    std::shared_ptr<Lecture> lecture = classTable->get(classID);
+
+    if(lecture->viewTime > 0) rankedClassTree.remove(lecture);
+
+    lecture->viewTime += time;
 
     try {
-        songByID = std::make_shared<ArtistSongsByIDKey>(ArtistSongsByIDKey(songID, 0));
+        rankedClassTree.insert(lecture);
     } catch (...){return ALLOCATION_ERROR;}
 
-
-
-    if(artist == nullptr || !artist->artistSongsByID.isMember(songByID)) return FAILURE;
-
-    int numStreams = artist->artistSongsByID.get(songByID)->numStreams;
-
-    try {
-        songByStreams = std::make_shared<ArtistSongsByStreamsKey>(ArtistSongsByStreamsKey(songID, numStreams));
-        song = std::make_shared<Lecture>(Lecture(songID, artistID, numStreams));
-    } catch (...){return ALLOCATION_ERROR;}
-
-    artist->artistSongsByID.remove(songByID);
-    artist->artistSongsByStreams.remove(songByStreams);
-    rankedClassTree.remove(song);
-
-
-    return SUCCESS;
-}
-
-StatusType CoursesManager::addToSongCount(int artistID, int songID, int count) {
-    std::shared_ptr<Course> artist = courseTable.get(artistID);
-    std::shared_ptr<ArtistSongsByIDKey> songByID;
-    std::shared_ptr<ArtistSongsByStreamsKey> songByStreams;
-    std::shared_ptr<Lecture> song;
-
-    try {
-        songByID = std::make_shared<ArtistSongsByIDKey>(ArtistSongsByIDKey(songID, 0));
-    } catch (...){return ALLOCATION_ERROR;}
-
-
-
-    if(artist == nullptr || !artist->artistSongsByID.isMember(songByID)) return FAILURE;
-
-    int numStreams = artist->artistSongsByID.get(songByID)->numStreams;
-
-    try {
-        songByStreams = std::make_shared<ArtistSongsByStreamsKey>(ArtistSongsByStreamsKey(songID, numStreams));
-        song = std::make_shared<Lecture>(Lecture(songID, artistID, numStreams));
-    } catch (...){return ALLOCATION_ERROR;}
-
-    artist->artistSongsByID.remove(songByID);
-    artist->artistSongsByStreams.remove(songByStreams);
-    rankedClassTree.remove(song);
-
-
-    return addClass(artistID, songID);
-}
-
-StatusType CoursesManager::getArtistBestSong(int artistID, int *songID) {
-    std::shared_ptr<Course> artist = courseTable.get(artistID);
-
-    if(artist == nullptr || artist->artistSongsByID.isEmpty()) return FAILURE;
-
-    *songID = artist->artistSongsByStreams.getMax()->songID;
 
     return SUCCESS;
 
 }
 
-StatusType CoursesManager::getRecommendedSongInPlace(int rank, int *artistID, int *songID) {
-    if(rank > rankedClassTree.getSize()) return FAILURE;
+StatusType CoursesManager::timeViewed(int courseID, int classID, int *timeViewed) {
 
-    *artistID = rankedClassTree.select(rank)->courseID;
-    *songID = rankedClassTree.select(rank)->classID;
+    std::shared_ptr<HashTable<std::shared_ptr<Lecture>>> classTable = courseTable.get(courseID);
+    if(classTable != nullptr && classID + 1 > classTable->getNumEntries()) return INVALID_INPUT;
+    if(classTable == nullptr) return FAILURE;
+
+    *timeViewed = classTable->get(classID)->viewTime;
+    return SUCCESS;
+
+}
+
+StatusType CoursesManager::getIthWatchedClass(int i, int *courseID, int *classID) {
+    if(i > rankedClassTree.getSize()) return FAILURE;
+
+    *courseID = rankedClassTree.select(i)->courseID;
+    *classID = rankedClassTree.select(i)->classID;
 
     return SUCCESS;
 }

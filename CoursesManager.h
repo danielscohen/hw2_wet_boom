@@ -22,10 +22,9 @@ public:
     StatusType addCourse(int courseID);
     StatusType removeCourse(int courseID);
     StatusType addClass(int courseID, int *classID);
-    StatusType removeSong(int artistID, int songID);
-    StatusType addToSongCount(int artistID, int songID, int count);
-    StatusType getArtistBestSong(int artistID, int *songID);
-    StatusType getRecommendedSongInPlace(int rank, int *artistID, int *songID);
+    StatusType watchClass(int courseID, int classID, int time);
+    StatusType timeViewed(int courseID, int classID, int *timeViewed);
+    StatusType getIthWatchedClass(int i, int *courseID, int *classID);
 
 };
 
