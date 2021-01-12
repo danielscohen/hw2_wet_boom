@@ -22,4 +22,4 @@ add_executable(hw2_wet
         main2.cpp
         CoursesManager.cpp
         CoursesManager.h
-        out2.txt)
+        out2.txt library2.cpp)
