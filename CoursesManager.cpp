@@ -27,13 +27,9 @@ StatusType CoursesManager::addClass(int courseID, int *classID) {
     std::shared_ptr<Lecture> lecture;
     *classID = classTable->getNumEntries();
 
-    try {
-         lecture = std::make_shared<Lecture>(Lecture(*classID, courseID, 0));
-         classTable->insert(*classID, lecture);
-         rankedClassTree.insert(lecture);
-    } catch (...){return ALLOCATION_ERROR;}
+    lecture = std::make_shared<Lecture>(Lecture(*classID, courseID, 0));
 
-    return SUCCESS;
+    return classTable->insert(*classID, lecture);
 }
 
 
